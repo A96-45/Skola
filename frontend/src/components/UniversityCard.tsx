@@ -27,7 +27,7 @@ const UniversityCard: React.FC<UniversityCardProps> = ({ university, selected = 
             className="w-full h-full object-contain"
             onError={(e) => {
               const target = e.target as HTMLImageElement;
-              target.src = '/images/placeholder-university.png';
+              target.src = '/placeholder.svg';
             }}
           />
         </div>

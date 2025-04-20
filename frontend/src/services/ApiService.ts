@@ -78,27 +78,6 @@ const mockApiClient = {
       throw new Error('Invalid email or password');
     }
     
-    // Mock signup endpoints
-    if (url.includes('/signup')) {
-      const mockUser: ExtendedUser = {
-        id: Math.random().toString(36).substring(2, 15),
-        full_name: data.fullName || 'New User',
-        email: data.email,
-        role: url.includes('lecturer') ? 'lecturer' : 'student',
-        university_id: data.universityId
-      };
-      
-      localStorage.setItem('mockUser', JSON.stringify(mockUser));
-      localStorage.setItem('authToken', 'mock-token-' + mockUser.id);
-      
-      return {
-        data: {
-          user: mockUser,
-          token: 'mock-token-' + mockUser.id
-        }
-      };
-    }
-    
     // Default response for other endpoints
     return { data: { success: true } };
   },
@@ -132,46 +111,6 @@ const apiClient = mockApiClient;
 
 // Authentication Services
 export const AuthService = {
-  // Register a new user
-  signUp: async (userData: {
-    email: string;
-    password: string;
-    full_name: string;
-    role: 'student' | 'lecturer';
-    university_id?: string;
-    universityUnits?: Array<{ university_name: string; unit_code: string; unit_name: string }>;
-  }): Promise<ExtendedUser> => {
-    try {
-      const endpoint = userData.role === 'lecturer' ? '/lecturers/signup' : '/students/signup';
-      
-      const payload = {
-        email: userData.email,
-        password: userData.password,
-        fullName: userData.full_name,
-        universityId: userData.university_id,
-        ...(userData.role === 'lecturer' && userData.universityUnits ? {
-          universityUnits: userData.universityUnits.map(unit => ({
-            universityId: unit.university_name,
-            unitCode: unit.unit_code,
-            unitName: unit.unit_name
-          }))
-        } : {})
-      };
-
-      const response = await apiClient.post(endpoint, payload);
-        
-      // Store the token if it's provided
-      if (response.data.token) {
-        localStorage.setItem('authToken', response.data.token);
-      }
-        
-      return response.data.user;
-    } catch (error: any) {
-      console.error('Error during signup:', error);
-      throw error;
-    }
-  },
-
   // Sign in existing user
   signIn: async (email: string, password: string): Promise<ExtendedUser> => {
     try {

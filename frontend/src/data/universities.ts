@@ -58,7 +58,7 @@ export const universities: University[] = [
   {
     id: "TUK",
     name: "Technical University of Kenya",
-    image: "https://scontent.fnuu2-1.fna.fbcdn.net/v/t1.18169-9/155712_560712413959544_987212059_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=Vl7ti15IrwMAX_UVNSi&_nc_oc=AQmCXPH6ELVMNXYPYBOMENw9JlKrIj7yhcJgXJqa5_UTrtTIxpH-Y5bDD3lailTxWgM&_nc_ht=scontent.fnuu2-1.fna&oh=00_AT9gPhJZ7SPqku8Ecaq2xkEqOXxcZni8nGNIEXHXhjB7aA&oe=62C62222"
+    image: "/placeholder.svg"
   },
   {
     id: "ANU",
@@ -78,7 +78,7 @@ export const universities: University[] = [
   {
     id: "SPU",
     name: "ST. Paul's University",
-    image: "https://scontent.fnuu2-1.fna.fbcdn.net/v/t1.18169-9/10533056_726917720687247_8049927151946640222_n.png?_nc_cat=100&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=Lc3k1ZlMR88AX8gA0ox&_nc_ht=scontent.fnuu2-1.fna&oh=00_AT_7rWqKePB5O9NMsdrlmzNPVTpfJmddsG6VYTE7SeVv0Q&oe=62C6AFE0"
+    image: "/placeholder.svg"
   },
   {
     id: "MS",
@@ -98,6 +98,6 @@ export const universities: University[] = [
   {
     id: "UC",
     name: "Utalii College",
-    image: "https://i0.wp.com/myschooleth.com/wp-content/uploads/2020/04/Kenya-Utalii-College.jpg?resize=300%2C127&ssl=1"
+    image: "/placeholder.svg"
   }
 ]; 

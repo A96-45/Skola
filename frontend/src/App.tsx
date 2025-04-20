@@ -8,9 +8,6 @@ import { WebSocketProvider } from "./context/WebSocketContext";
 import { ThemeProvider } from "next-themes";
 import Welcome from "./pages/Welcome";
 import NotFound from "./pages/NotFound";
-import StudentSignup from "./pages/Auth/StudentSignup";
-import LecturerSignup from "./pages/Auth/LecturerSignup";
-import Login from "./pages/Auth/Login";
 import StudentDashboard from "./pages/Student/StudentDashboard";
 import LecturerDashboard from "./pages/Lecturer/LecturerDashboard";
 import StudentTimetable from "./pages/Student/StudentTimetable";
@@ -42,7 +39,9 @@ import UnitResources from './pages/Lecturer/UnitResources';
 import AssignmentGrading from './pages/Lecturer/AssignmentGrading';
 import StudentPlanner from './pages/Student/StudentPlanner';
 import LecturerPlanner from './pages/Lecturer/LecturerPlanner';
-import TestAuth from './pages/TestAuth';
+import UniversityUsersPage from './app/dashboard/university-users/page';
+import UniversityUnits from './pages/Student/UniversityUnits';
+import UnitDetail from './pages/Student/UnitDetail';
 
 const queryClient = new QueryClient();
 
@@ -58,11 +57,6 @@ const App = () => (
               <Routes>
                 {/* Welcome Route */}
                 <Route path="/" element={<Welcome />} />
-                
-                {/* Auth Routes */}
-                <Route path="/login" element={<Login />} />
-                <Route path="/student/signup" element={<StudentSignup />} />
-                <Route path="/lecturer/signup" element={<LecturerSignup />} />
                 
                 {/* Student Routes - Wrapped in Layout */}
                 <Route element={<StudentLayout />}>
@@ -84,6 +78,8 @@ const App = () => (
                   <Route path="/student/chatbot" element={<StudentChatbot />} />
                   <Route path="/student/profile" element={<StudentProfile />} />
                   <Route path="/student/planner" element={<StudentPlanner />} />
+                  <Route path="/student/university/:universityId/units" element={<UniversityUnits />} />
+                  <Route path="/student/unit/:unitId" element={<UnitDetail />} />
                 </Route>
                 
                 {/* Lecturer Routes - Wrapped in Layout */}
@@ -110,15 +106,13 @@ const App = () => (
                 {/* Redirects */}
                 <Route path="/dashboard/student" element={<Navigate to="/student/dashboard" replace />} />
                 <Route path="/dashboard/lecturer" element={<Navigate to="/lecturer/dashboard" replace />} />
+                <Route path="/dashboard/university-users" element={<UniversityUsersPage />} />
                 
                 {/* 404 Route */}
                 <Route path="*" element={<NotFound />} />
                 
                 {/* Add the new route */}
                 <Route path="/university-link-demo" element={<UniversityLinkDemo />} />
-                
-                {/* Test Route */}
-                <Route path="/test-auth" element={<TestAuth />} />
               </Routes>
             </WebSocketProvider>
           </AuthProvider>

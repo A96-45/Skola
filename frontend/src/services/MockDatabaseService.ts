@@ -245,18 +245,6 @@ export const signIn = async (email: string, password: string): Promise<User> => 
   return user;
 };
 
-export const signUp = async (email: string, password: string, role: 'student' | 'lecturer'): Promise<User> => {
-  const newUser: User = {
-    id: generateId(),
-    email,
-    name: email.split('@')[0],
-    role,
-  };
-  
-  mockUsers.push(newUser);
-  return newUser;
-};
-
 export const signOut = async (): Promise<void> => {
   // Mock sign out - nothing to do
   return;

@@ -1,15 +1,12 @@
 import React from 'react';
-import { useLocation, Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import LecturerBottomNav from '@/components/lecturer/LecturerBottomNav';
 
 const LecturerLayout: React.FC = () => {
-  const location = useLocation();
-  const isAuthPage = location.pathname.includes('/signup') || location.pathname.includes('/login');
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
+    <div className="min-h-screen bg-gradient-to-br from-zinc-900 via-zinc-950 to-black text-white pb-20">
       <Outlet />
-      {!isAuthPage && <LecturerBottomNav />}
+      <LecturerBottomNav />
     </div>
   );
 };
